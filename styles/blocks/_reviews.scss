@@ -1,0 +1,101 @@
+@use "../variable" as *;
+@use "../utils" as *;
+
+.reviews {
+    position: relative;
+    padding-top: fluid(300, 110);
+    padding-bottom: fluid(150, 70);
+    &__inner {
+        position: relative;
+        max-width: toRem(1680);
+        margin: 0 auto;
+        padding: fluid(100, 0);
+        padding-top: fluid(100, 50);
+        border-radius: toRem(10);
+        background-color: $bgColor;
+    }
+    &__header {
+        text-align: center;
+        margin-bottom: fluid(70, 55);
+    }
+    &__title {
+        font-size: fluid(72, 45);
+        margin-bottom: toRem(10);
+        @include mobile-vs {
+            line-height: 1.2;
+        }
+    }
+    &__subtitle {
+        font-size: fluid(24, 16);
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+    &__thoughts {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(toRem(250), toRem(510)));
+        gap: toRem(25);
+    }
+    &__thought {
+        width: 100%;
+        padding-block: fluid(69, 30);
+        padding-right: fluid(69, 15);
+        padding-left: fluid(100, 52);
+        background-color: $additionalBgColor;
+        border-radius: toRem(5);
+    }
+    &__footer {
+        text-align: center;
+        @include tablet {
+            margin-top: toRem(50);
+        }
+        .reviews__subtitle {
+            max-width: fluid(425, 200);
+            text-transform: none;
+            letter-spacing: 0.1em;
+            margin: 0 auto;
+        }
+    }
+}
+
+.thought {
+    &__text {
+        position: relative;
+        line-height: 1.9;
+        margin-bottom: toRem(25);
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: calc(100% + fluid(20, 7));
+            display: block;
+            width: fluid(32, 27);
+            height: fluid(25, 20);
+            background-image: url("../../icons/quote.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    &__author {
+        display: flex;
+        align-items: center;
+        gap: toRem(12);
+        font-size: toRem(14);
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        @include mobile-vs {
+            font-size: toRem(13);
+            letter-spacing: 0.1em;
+            flex-direction: column;
+            align-items: start;
+        }
+        &-avatar {
+            width: fluid(80, 65);
+            height: fluid(80, 65);
+            border-radius: toRem(4);
+        }
+    }
+}

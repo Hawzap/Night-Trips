@@ -1,0 +1,55 @@
+@use "../variable" as *;
+@use "../utils" as *;
+
+.line {
+    &::before,
+    &::after {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: toRem(2);
+        background-color: $accentColor;
+    }
+    &--top {
+        &::before {
+            content: "";
+            top: 0;
+            translate: -50% -50%;
+        }
+    }
+    &--bottom {
+        &::after {
+            content: "";
+            bottom: 0;
+            translate: -50% 50%;
+        }
+    }
+    &--80 {
+        &#{w} {
+            &::after,
+            &::before {
+                width: fluid(80, 40);
+            }
+        }
+        &#{h} {
+            &::after,
+            &::before {
+                height: fluid(80, 40);
+            }
+        }
+    }
+    &--30 {
+        &#{w} {
+            &::after,
+            &::before {
+                width: toRem(30);
+            }
+        }
+        &#{h} {
+            &::after,
+            &::before {
+                height: toRem(30);
+            }
+        }
+    }
+}

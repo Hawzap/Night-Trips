@@ -1,0 +1,27 @@
+@use "../utils" as *;
+@use "../variable" as *;
+
+.button {
+    position: relative;
+    color: $mainColor;
+    text-transform: uppercase;
+    letter-spacing: toRem(3);
+    border-radius: 48px;
+    transition: box-shadow 0.3s;
+    background-color: $accentColorDarker;
+    @include hover {
+        box-shadow: 10px 9px 31px -7px rgba(11, 174, 201, 0.86);
+    }
+    &:after {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        translate: 50% -50%;
+        content: "";
+        display: block;
+        width: fluid(30, 16);
+        height: 2px;
+        background-color: $mainColor;
+        border-radius: 16px;
+    }
+}

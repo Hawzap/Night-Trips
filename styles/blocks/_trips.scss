@@ -1,0 +1,429 @@
+@use "../variable" as *;
+@use "../utils/" as *;
+
+.trips {
+    position: relative;
+    padding-top: toRem(80);
+    @include tablet {
+        padding-top: 0;
+    }
+    &__blured {
+        display: block;
+        width: 100%;
+        height: toRem(380);
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        pointer-events: none;
+        background: linear-gradient(
+            180deg,
+            rgba(1, 22, 39, 0) 0%,
+            $bgColor 76.64%,
+            $bgColor 100%
+        );
+    }
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: fluid(1100, 320);
+        height: fluid(1100, 320);
+        background-repeat: no-repeat;
+        background-size: contain;
+        pointer-events: none;
+        z-index: -1;
+    }
+    &::before {
+        top: 0;
+        left: 0;
+        background-image: url("../../images/bgParticlesTopTrips.png");
+        background-position-x: calc(fluid(300, 80) * -1);
+    }
+    &::after {
+        bottom: calc(fluid(300, 105) * -1);
+        right: 0;
+        background-image: url("../../images/bgParticlesBottomTrips.png");
+        background-position-x: fluid(280, 95);
+    }
+
+    &__header {
+        margin-bottom: fluid(83, 65);
+        @include tablet-above {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: toRem(80);
+            & > *:not(:last-child) {
+                position: relative;
+                &::before,
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    translate: 0 -50%;
+                    transform-origin: center;
+                    left: calc(100% + #{toRem(40)});
+                    display: block;
+                    width: toRem(2);
+                    height: toRem(20);
+                    background-color: $accentColor;
+                    border-radius: toRem(2);
+                }
+                &::after {
+                    rotate: 45deg;
+                }
+                &::before {
+                    rotate: -45deg;
+                }
+            }
+        }
+        @include tablet {
+            & > *:not(:last-child) {
+                margin-bottom: fluid(40, 20);
+            }
+        }
+    }
+    &__title {
+        font-size: fluid(72, 43);
+    }
+    &__description {
+        max-width: toRem(370);
+        @include mobile-vs {
+            font-size: toRem(15);
+        }
+    }
+    &__sections {
+        position: relative;
+        display: inline-flex;
+        border-bottom: toRem(2) solid $mutedColorBorder;
+        margin-bottom: fluid(150, 65);
+        &-activeLine {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            translate: 0 -50%;
+            height: toRem(3);
+            background-color: $accentColor;
+            border-radius: toRem(4);
+            transition: width 0.4s, left 0.4s;
+        }
+        @include mobile-s {
+            width: 100%;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+    }
+    &__item {
+        position: relative;
+        color: $mutedColorText;
+        button {
+            font-weight: 700;
+            color: inherit;
+            background-color: transparent;
+            padding-inline: toRem(75);
+            padding-bottom: toRem(20);
+            height: 100%;
+            @include tablet {
+                padding-inline: toRem(35);
+                padding-bottom: toRem(20);
+            }
+        }
+        &--active {
+            color: $accentColor;
+            transition: color 0.4s;
+        }
+    }
+    &__body {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: toRem(120);
+        &::before {
+            content: "";
+            position: absolute;
+            top: -80%;
+            left: -32%;
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-image: url("../../images/bgParticlesCenterTrips.png");
+            background-position: center top;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        @include tablet {
+            gap: toRem(50);
+        }
+        &__changingEl {
+            position: relative;
+            width: fit-content;
+            overflow: hidden;
+            span {
+                transition: 0.5s;
+            }
+        }
+        &__changedEl {
+            position: absolute;
+            top: 0;
+            &--r {
+                left: -100%;
+            }
+            &--l {
+                left: 100%;
+            }
+            transition: left 0.5s;
+            width: 100%;
+        }
+        &__startAnimChanging {
+            display: block;
+            &--r {
+                translate: 100% 0;
+            }
+            &--l {
+                translate: -100% 0;
+            }
+        }
+        &__startAnimChanged {
+            &--r {
+                left: 0;
+            }
+            &--l {
+                left: 0;
+            }
+        }
+        &-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &-container {
+                margin-bottom: toRem(50);
+            }
+        }
+        &-image {
+            @media (width <= toRem(1620)) {
+                padding-left: toRem(100);
+            }
+            @include tablet {
+                padding-left: 0;
+            }
+            @include mobile {
+                margin-bottom: toRem(65);
+            }
+        }
+        &-title {
+            font-size: fluid(65, 40);
+            margin-bottom: toRem(35);
+            span {
+                display: block;
+                width: 100%;
+            }
+            @include mobile {
+                order: -1;
+                span {
+                    text-align: center;
+                }
+            }
+        }
+        &-text {
+            max-width: toRem(500);
+            margin-bottom: toRem(45);
+            p {
+                transition: height 1s, translate 0.5s, left 0.5s;
+            }
+        }
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            &::before {
+                top: 0;
+                left: -20%;
+            }
+            &-image {
+                margin-bottom: toRem(100);
+            }
+            &-info,
+            .trips__info-container {
+                display: contents;
+            }
+        }
+        @include mobile-vs {
+            &::before {
+                content: none;
+            }
+        }
+    }
+    &__image-container {
+        position: relative;
+        width: fluid(486, 200);
+        height: fluid(610, 300);
+        z-index: 5;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: fluid(230, 120);
+            height: fluid(230, 120);
+            background-image: url("../../icons/squareDots.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            translate: -25% 25%;
+            z-index: -1;
+        }
+        img {
+            border-radius: toRem(10);
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__image {
+        &-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            translate: -50% -50%;
+            font-size: fluid(24, 13);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: toRem(3);
+            z-index: 3;
+            @include mobile-s {
+                translate: -25% -75%;
+            }
+        }
+        &-borders {
+            position: relative;
+            display: block;
+            width: fluid(172, 90);
+            height: toRem(12);
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                background-color: $accentColor;
+            }
+            &::after {
+                bottom: 100%;
+                width: 100%;
+                height: toRem(2);
+                border-radius: toRem(2) toRem(2) toRem(2) 0;
+            }
+            &::before {
+                top: toRem(-1);
+                height: 100%;
+                width: toRem(2);
+                border-radius: 0 0 toRem(2) toRem(2);
+            }
+        }
+        &-count {
+            color: $accentColor;
+            margin-bottom: toRem(12);
+            @include tablet {
+                margin-bottom: toRem(5);
+            }
+        }
+        &-name {
+            max-width: fluid(200, 125);
+        }
+        &-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+        &-slider {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            background-color: #0b2138;
+            gap: toRem(2);
+            border-radius: toRem(10) 0 toRem(10) 0;
+            overflow: hidden;
+            z-index: 3;
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: fluid(65, 40);
+                height: fluid(65, 40);
+                background-color: $bgColor;
+                &:first-child svg {
+                    rotate: 180deg;
+                }
+                svg {
+                    width: fluid(24, 20);
+                    height: fluid(24, 20);
+                }
+            }
+        }
+        &-active {
+            position: relative;
+            object-fit: cover;
+            z-index: 2;
+        }
+        &-disappearing {
+            opacity: 0;
+        }
+        &-appeared {
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            z-index: 1;
+        }
+    }
+    &__button {
+        font-size: toRem(14);
+        a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            padding: fluid(19, 16) fluid(47, 35);
+        }
+        @include mobile {
+            font-size: toRem(14);
+            margin-bottom: toRem(50);
+        }
+    }
+    &__socials-container {
+        display: inline-flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: flex-end;
+    }
+    &__socials {
+        position: relative;
+        padding: 0 toRem(16) toRem(20) 0;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: $accentColor;
+        }
+        &::after {
+            bottom: toRem(-2);
+            left: 100%;
+            height: toRem(30);
+            width: toRem(2);
+            border-radius: toRem(2) toRem(2) toRem(2) 0;
+        }
+        &::before {
+            top: 100%;
+            left: 0;
+            height: toRem(2);
+            width: 100%;
+            border-radius: toRem(2) 0 0 toRem(2);
+        }
+        &-title {
+            font-size: toRem(15);
+            font-weight: 700;
+            letter-spacing: toRem(3);
+            text-transform: uppercase;
+            margin-bottom: toRem(20);
+        }
+    }
+}

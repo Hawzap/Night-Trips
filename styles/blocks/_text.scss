@@ -1,0 +1,11 @@
+@use "../utils/" as *;
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+    font-size: fluid(18, 15);
+    &--paragraph {
+        font-weight: 700;
+    }
+}

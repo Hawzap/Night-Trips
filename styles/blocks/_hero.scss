@@ -1,0 +1,58 @@
+@use "../variable" as *;
+@use "../utils/" as *;
+
+.hero {
+    padding-top: fluid(130, 90);
+    padding-bottom: 200px;
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    &__title {
+        font-size: fluid(120, 52);
+        line-height: 1.2;
+        margin-bottom: 14px;
+    }
+    &__offer {
+        font-size: fluid(18, 14);
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        margin-bottom: fluid(50, 35);
+    }
+    &__description {
+        font-size: fluid(17, 15);
+        max-width: 643px;
+    }
+    &__footer {
+        position: relative;
+        z-index: 2;
+        margin-top: fluid(192, 105);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__scroll {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 15px;
+        p {
+            font-size: fluid(15, 13);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            writing-mode: tb-rl;
+            rotate: 180deg;
+        }
+        &:after {
+            content: "";
+            width: 2px;
+            height: 80px;
+            border-radius: 13px;
+            background-color: $accentColor;
+            transform: translateX(-50%);
+        }
+    }
+}

@@ -1,0 +1,31 @@
+@use "utils" as *;
+@use "variable" as *;
+
+// *,
+// *::before,
+// *::after {
+//     outline: 1px solid white;
+// }
+
+body {
+    background-color: $bgColor;
+    color: $mainColor;
+    font-family: $mainFontFamily;
+}
+
+.container {
+    max-width: calc($containerSize + $containerPadding * 2);
+    margin-inline: auto;
+    padding-inline: $containerPadding;
+    @include tablet {
+        max-width: calc($containerSizeLaptop + $containerPadding * 2);
+    }
+}
+
+.title {
+    font-family: $accentFontFamily;
+}
+
+.none {
+    display: none;
+}

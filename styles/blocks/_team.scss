@@ -1,0 +1,201 @@
+@use "../variable" as *;
+@use "../utils" as *;
+
+.team {
+    position: relative;
+    padding-top: fluid(280, 110);
+    @include mobile-s-above {
+        &::before {
+            content: "";
+            position: absolute;
+            top: 15%;
+            left: 0;
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-image: url("../../images/mountainsBg.png");
+            background-position: center top;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+    }
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @include laptop {
+            & {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: baseline;
+            }
+            .team__header {
+                display: contents;
+            }
+        }
+    }
+    &__title {
+        font-size: fluid(72, 50);
+        margin-top: toRem(60);
+        margin-bottom: fluid(20, 10);
+    }
+    &__text {
+        max-width: toRem(345);
+        margin-bottom: toRem(40);
+    }
+    @include laptop {
+        &__title,
+        &__text {
+            width: 100%;
+            text-align: center;
+        }
+        &__title {
+            margin-top: 0;
+        }
+        &__text {
+            max-width: 100%;
+            gap: toRem(10);
+        }
+    }
+
+    &__readMore {
+        font-size: fluid(16, 14);
+        padding: fluid(19, 15) fluid(40, 26);
+        @include laptop {
+            order: 1;
+            margin: 0 auto;
+        }
+    }
+    &__persons {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(toRem(200), 1fr));
+        grid-template-rows: repeat(2, 1fr);
+        padding-right: toRem(70);
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: toRem(70);
+            height: toRem(470);
+            top: 50%;
+            right: 0;
+            translate: 0 -50%;
+            z-index: -1;
+            background-image: url("../../icons/columnDots.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        @include laptop {
+            padding-right: 0;
+            margin: 0 auto;
+            margin-bottom: toRem(60);
+            &::after {
+                translate: 100% -50%;
+            }
+        }
+        @include tablet {
+            gap: toRem(10);
+            margin: 0 auto;
+            margin-bottom: toRem(60);
+            &::after {
+                content: none;
+            }
+        }
+        @include mobile-s {
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(toRem(200), toRem(395))
+            );
+            gap: toRem(20);
+            margin-bottom: toRem(40);
+        }
+    }
+    &__person {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        @include tablet-above {
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: $bgColor;
+                opacity: 1;
+                z-index: -1;
+            }
+        }
+        &-img {
+            opacity: 0.3;
+            transition: 0.4s;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+            @include tablet {
+                opacity: 1;
+            }
+        }
+        &-info {
+            position: absolute;
+            bottom: toRem(50);
+            padding: fluid(25, 10);
+            color: black;
+            font-size: fluid(15, 12);
+            font-weight: 700;
+            letter-spacing: toRem(1);
+            text-transform: uppercase;
+            white-space: nowrap;
+            border-radius: toRem(8);
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            @media (width <= toRem(1620.98)) {
+                max-width: toRem(200);
+                white-space: normal;
+            }
+            @include tablet {
+                max-width: toRem(300);
+                white-space: nowrap;
+                opacity: 1;
+                visibility: visible;
+                bottom: toRem(10);
+            }
+        }
+        &-position {
+            color: $accentColor;
+        }
+        &:nth-child(odd) &-info {
+            right: 50%;
+            translate: -50% 0;
+            @include tablet {
+                left: 50%;
+                right: auto;
+                translate: -50% 0;
+            }
+        }
+        &:nth-child(even) &-info {
+            left: 50%;
+            translate: 50% 0;
+            @include tablet {
+                left: 50%;
+                right: auto;
+                translate: -50% 0;
+            }
+        }
+        @include hover {
+            .team__person-img {
+                opacity: 1;
+            }
+            .team__person-info {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}

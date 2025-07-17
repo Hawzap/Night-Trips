@@ -1,0 +1,16 @@
+@use "utils" as *;
+
+$mainFontFamily: "Larsseit";
+$accentFontFamily: "Noe Display";
+
+$containerSize: toRem(1400);
+$containerSizeLaptop: toRem(910);
+$containerPadding: toRem(16);
+
+$mainColor: #ffffff;
+$accentColor: #41ead4;
+$accentColorDarker: #01c9e0;
+$mutedColorText: #7b8a95;
+$mutedColorBorder: #18585c;
+$bgColor: #011627;
+$additionalBgColor: #02223b;

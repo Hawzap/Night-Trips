@@ -1,0 +1,13 @@
+@use "../variable" as *;
+@use "../utils/" as *;
+
+.logo {
+    font-family: $accentFontFamily;
+    font-size: fluid(36, 27);
+    text-transform: uppercase;
+    line-height: 1.9;
+}
+
+.dot--accent {
+    color: $accentColor;
+}

@@ -1,0 +1,31 @@
+@use "../variable" as *;
+@use "../utils/" as *;
+
+.header__container {
+    background-image: url("../../images/heroBg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header {
+    padding-top: toRem(60);
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: fluid(30, 17);
+    }
+    &__button-search {
+        width: fluid(24, 20);
+        height: fluid(24, 20);
+    }
+    &__button {
+        font-size: 16px;
+        padding: fluid(20, 13) fluid(58, 38);
+    }
+}
