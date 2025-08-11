@@ -1,12 +1,6 @@
 @use "utils" as *;
 @use "variable" as *;
 
-// *,
-// *::before,
-// *::after {
-//     outline: 1px solid white;
-// }
-
 body {
     background-color: $bgColor;
     color: $mainColor;
@@ -24,8 +18,4 @@ body {
 
 .title {
     font-family: $accentFontFamily;
-}
-
-.none {
-    display: none;
 }

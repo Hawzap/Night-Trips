@@ -1,34 +1,18 @@
-@charset "UTF-8";
-/**
-  Нормализация блочной модели
- */
 *,
 ::before,
 ::after {
   box-sizing: border-box;
 }
 
-/**
-   Убираем внутренние отступы слева тегам списков,
-   у которых есть атрибут class
-  */
 :where(ul, ol):where([class]) {
   padding-left: 0;
 }
 
-/**
-   Убираем внешние отступы body и двум другим тегам,
-   у которых есть атрибут class
-  */
 body,
 :where(blockquote, figure, fieldset):where([class]) {
   margin: 0;
 }
 
-/**
-   Убираем внешние отступы вертикали нужным тегам,
-   у которых есть атрибут class
-  */
 :where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
   margin-block: 0;
 }
@@ -42,10 +26,6 @@ body,
   border: none;
 }
 
-/**
-   Убираем стандартный маркер маркированному списку,
-   у которого есть атрибут class
-  */
 :where(ul[class]) {
   list-style: none;
 }
@@ -54,26 +34,10 @@ body,
   font-style: normal;
 }
 
-/**
-   Обнуляем вертикальные внешние отступы параграфа,
-   объявляем локальную переменную для внешнего отступа вниз,
-   чтобы избежать взаимодействие с более сложным селектором
-  */
 p {
   margin-block: 0;
 }
 
-/**
-   Внешний отступ вниз для параграфа без атрибута class,
-   который расположен не последним среди своих соседних элементов
-  */
-p:where(:not([class]):not(:last-child)) {
-  margin-bottom: var(--paragraphMarginBottom);
-}
-
-/**
-   Упрощаем работу с изображениями и видео
-  */
 img,
 video {
   display: block;
@@ -81,9 +45,6 @@ video {
   height: auto;
 }
 
-/**
-   Наследуем свойства шрифт для полей ввода
-  */
 input,
 textarea,
 select,
@@ -93,74 +54,30 @@ button {
 }
 
 html {
-  /**
-   Пригодится в большинстве ситуаций
-   (когда, например, нужно будет "прижать" футер к низу сайта)
-  */
   height: 100%;
-  /**
-   Убираем скачок интерфейса по горизонтали
-   при появлении / исчезновении скроллбара
-  */
   scrollbar-gutter: stable;
 }
 
-/**
-   Плавный скролл
-  */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  /**
-   Пригодится в большинстве ситуаций
-   (когда, например, нужно будет "прижать" футер к низу сайта)
-  */
   min-height: 100%;
-  /**
-   Унифицированный интерлиньяж
-  */
   line-height: 1.5;
 }
 
-/**
-   Нормализация высоты элемента ссылки при его инспектировании в DevTools
-  */
-a:where([class]) {
-  display: inline-flex;
-}
-
-/**
-   Курсор-рука при наведении на элемент
-  */
 button,
 label {
   cursor: pointer;
 }
 
-/**
-   Приводим к единому цвету svg-элементы
-   (за исключением тех, у которых уже указан
-   атрибут fill со значением 'none' или начинается с 'url')
-  */
 :where([fill]:not([fill=none], [fill^=url])) {
   fill: currentColor;
 }
 
-/**
-   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
-  */
 svg * {
   transition-property: fill, stroke;
-}
-
-/**
-   Приведение рамок таблиц в классический 'collapse' вид
-  */
-:where(table) {
-  border-collapse: collapse;
-  border-color: currentColor;
 }
 
 @font-face {
@@ -205,10 +122,6 @@ body {
   font-family: "Noe Display";
 }
 
-.none {
-  display: none;
-}
-
 .logo {
   font-family: "Noe Display";
   font-size: clamp(1.6875rem, 1.5208333333rem + 0.8333333333vw, 2.25rem);
@@ -221,7 +134,7 @@ body {
 }
 
 .header__container {
-  background-image: url("../../images/heroBg.jpg");
+  background-image: url("../images/heroBg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -382,13 +295,13 @@ body {
 .trips::before {
   top: 0;
   left: 0;
-  background-image: url("../../images/bgParticlesTopTrips.png");
+  background-image: url("../images/bgParticlesTopTrips.png");
   background-position-x: calc(clamp(5rem, 0.9259259259rem + 20.3703703704vw, 18.75rem) * -1);
 }
 .trips::after {
   bottom: calc(clamp(6.5625rem, 2.9513888889rem + 18.0555555556vw, 18.75rem) * -1);
   right: 0;
-  background-image: url("../../images/bgParticlesBottomTrips.png");
+  background-image: url("../images/bgParticlesBottomTrips.png");
   background-position-x: clamp(5.9375rem, 2.5115740741rem + 17.1296296296vw, 17.5rem);
 }
 .trips__header {
@@ -499,7 +412,7 @@ body {
   display: block;
   width: 100%;
   aspect-ratio: 1/1;
-  background-image: url("../../images/bgParticlesCenterTrips.png");
+  background-image: url("../images/bgParticlesCenterTrips.png");
   background-position: center top;
   background-size: contain;
   background-repeat: no-repeat;
@@ -628,7 +541,7 @@ body {
   left: 0;
   width: clamp(7.5rem, 5.462962963rem + 10.1851851852vw, 14.375rem);
   height: clamp(7.5rem, 5.462962963rem + 10.1851851852vw, 14.375rem);
-  background-image: url("../../icons/squareDots.svg");
+  background-image: url("../icons/squareDots.svg");
   background-repeat: no-repeat;
   background-size: contain;
   translate: -25% 25%;
@@ -811,7 +724,7 @@ body {
     display: block;
     width: 100%;
     aspect-ratio: 1/1;
-    background-image: url("../../images/mountainsBg.png");
+    background-image: url("../images/mountainsBg.png");
     background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -882,7 +795,7 @@ body {
   right: 0;
   translate: 0 -50%;
   z-index: -1;
-  background-image: url("../../icons/columnDots.svg");
+  background-image: url("../icons/columnDots.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1115,7 +1028,7 @@ body {
   display: block;
   width: clamp(1.6875rem, 1.5949074074rem + 0.462962963vw, 2rem);
   height: clamp(1.25rem, 1.1574074074rem + 0.462962963vw, 1.5625rem);
-  background-image: url("../../icons/quote.svg");
+  background-image: url("../icons/quote.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }

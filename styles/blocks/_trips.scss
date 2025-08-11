@@ -37,13 +37,13 @@
     &::before {
         top: 0;
         left: 0;
-        background-image: url("../../images/bgParticlesTopTrips.png");
+        background-image: url("../images/bgParticlesTopTrips.png");
         background-position-x: calc(fluid(300, 80) * -1);
     }
     &::after {
         bottom: calc(fluid(300, 105) * -1);
         right: 0;
-        background-image: url("../../images/bgParticlesBottomTrips.png");
+        background-image: url("../images/bgParticlesBottomTrips.png");
         background-position-x: fluid(280, 95);
     }
 
@@ -147,7 +147,7 @@
             display: block;
             width: 100%;
             aspect-ratio: 1 / 1;
-            background-image: url("../../images/bgParticlesCenterTrips.png");
+            background-image: url("../images/bgParticlesCenterTrips.png");
             background-position: center top;
             background-size: contain;
             background-repeat: no-repeat;
@@ -167,14 +167,14 @@
         &__changedEl {
             position: absolute;
             top: 0;
+            transition: left 0.5s;
+            width: 100%;
             &--r {
                 left: -100%;
             }
             &--l {
                 left: 100%;
             }
-            transition: left 0.5s;
-            width: 100%;
         }
         &__startAnimChanging {
             display: block;
@@ -268,7 +268,7 @@
             left: 0;
             width: fluid(230, 120);
             height: fluid(230, 120);
-            background-image: url("../../icons/squareDots.svg");
+            background-image: url("../icons/squareDots.svg");
             background-repeat: no-repeat;
             background-size: contain;
             translate: -25% 25%;

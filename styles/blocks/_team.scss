@@ -13,7 +13,7 @@
             display: block;
             width: 100%;
             aspect-ratio: 1 / 1;
-            background-image: url("../../images/mountainsBg.png");
+            background-image: url("../images/mountainsBg.png");
             background-position: center top;
             background-size: cover;
             background-repeat: no-repeat;
@@ -83,7 +83,7 @@
             right: 0;
             translate: 0 -50%;
             z-index: -1;
-            background-image: url("../../icons/columnDots.svg");
+            background-image: url("../icons/columnDots.svg");
             background-repeat: no-repeat;
             background-size: contain;
         }
